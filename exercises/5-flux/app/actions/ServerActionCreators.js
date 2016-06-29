@@ -7,8 +7,14 @@ var ServerActionCreators = {
       type: ActionTypes.CONTACTS_LOADED,
       contacts: contacts
     });
+  },
+
+  deletedUser (contact) {
+    AppDispatcher.handleServerAction({
+      type: ActionTypes.CONTACT_DELETED,
+      contact: contact
+    });    
   }
 };
 
 module.exports = ServerActionCreators;
-
