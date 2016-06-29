@@ -50,6 +50,7 @@ var App = React.createClass({
     return (
       <div className="App">
         <div className="ContactList">
+          <p><Link to="about">About</Link></p>
           <Link to="new">New Contact</Link>
           <ul>
             {contacts}
@@ -159,9 +160,16 @@ var NotFound = React.createClass({
   }
 });
 
+var About = React.createClass({
+  render: function () {
+    return <h2>About!</h2>;
+  }
+});
+
 var routes = (
   <Route handler={App}>
     <DefaultRoute handler={Index}/>
+    <Route name="about" handler = {About} />
     <Route name="new" path="contact/new" handler={NewContact}/>
     <Route name="contact" path="contact/:id" handler={Contact}/>
     <NotFoundRoute handler={NotFound}/>
@@ -171,4 +179,3 @@ var routes = (
 Router.run(routes, function (Handler) {
   React.render(<Handler/>, document.body);
 });
-

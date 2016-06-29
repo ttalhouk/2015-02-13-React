@@ -20,9 +20,15 @@ var App = React.createClass({
     this.setState(ContactsStore.getState());
   },
 
+  removeAction (contact){
+    ViewActionCreators.removeContacts(contact);
+  },
+
   renderContacts () {
+    console.log(this.state.contacts);
     return this.state.contacts.map((contact) => {
-      return <li>{contact.first} {contact.last}</li>;
+      return <li>{contact.first} {contact.last} <button onClick = {this.removeAction.bind(this, contact)}>remove</button>
+      </li>;
     });
   },
 
@@ -40,4 +46,3 @@ var App = React.createClass({
 });
 
 module.exports = App;
-

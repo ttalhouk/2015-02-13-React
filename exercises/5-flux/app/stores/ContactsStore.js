@@ -39,7 +39,14 @@ ContactsStore.dispatchToken = AppDispatcher.register((payload) => {
       contacts: action.contacts
     });
   }
+  if (action.type === ActionTypes.CONTACT_DELETED) {
+    var newContacts = state.contacts.filter((contact) => {
+      return contact !== action.contact;
+    });
+    setState({
+      contacts: newContacts
+    });
+  }
 });
 
 module.exports = ContactsStore;
-
